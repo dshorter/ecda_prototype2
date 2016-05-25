@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DashboardCanvas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CanvasCurrentCulture" type="xs:string" />
+        <xs:element name="CanvasWidth" type="xs:unsignedShort" />
+        <xs:element name="CanvasHeight" type="xs:unsignedShort" />
+        <xs:element name="Rules">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="rule">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="friendlyRule" type="xs:string" />
+                    <xs:element minOccurs="0" name="friendlyLabel" type="xs:string" />
+                    <xs:element name="destinationColumnName" type="xs:string" />
+                    <xs:element minOccurs="0" name="destinationColumnType" type="xs:string" />
+                    <xs:element minOccurs="0" name="assignValue" type="xs:string" />
+                    <xs:element minOccurs="0" name="elseValue" type="xs:string" />
+                    <xs:element minOccurs="0" name="cbxFieldType" type="xs:string" />
+                    <xs:element name="variableDataType" type="xs:string" />
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="EwavDataFilterCondition">
+                      <xs:complexType>
+                        <xs:attribute name="friendlyOperand" type="xs:string" use="required" />
+                        <xs:attribute name="friendlyValue" type="xs:string" use="required" />
+                        <xs:attribute name="fieldName" type="xs:string" use="required" />
+                        <xs:attribute name="joinType" type="xs:string" use="required" />
+                        <xs:attribute name="friendLowValue" type="xs:string" use="required" />
+                        <xs:attribute name="friendHighValue" type="xs:string" use="required" />
+                        <xs:attribute name="order" type="xs:unsignedByte" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Columns">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="column" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="type" type="xs:string" use="required" />
+                  <xs:attribute name="order" type="xs:unsignedByte" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataFilters" />
+        <xs:element name="Gadgets">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element maxOccurs="unbounded" name="gadget">
+                  <xs:complexType mixed="true">
+                    <xs:sequence minOccurs="0">
+                      <xs:choice maxOccurs="unbounded">
+                        <xs:element name="MainVariableName" type="xs:string" />
+                        <xs:element name="CrosstabVariableName" type="xs:string" />
+                        <xs:element name="ShouldIncludeFullSummaryStatistics" type="xs:boolean" />
+                        <xs:element name="exposurevariable" type="xs:string" />
+                        <xs:element name="outcomevariable" type="xs:string" />
+                        <xs:element name="mainVariable" type="xs:string" />
+                        <xs:element name="crosstabVariable" type="xs:string" />
+                        <xs:element name="strataVariable" type="xs:string" />
+                        <xs:element name="weightVariable" />
+                        <xs:element name="sort" type="xs:string" />
+                        <xs:element name="combinedmode" type="xs:string" />
+                        <xs:element name="truevalue" />
+                        <xs:element name="showdenominator" type="xs:boolean" />
+                        <xs:element name="allValues" type="xs:boolean" />
+                        <xs:element name="precision" type="xs:unsignedByte" />
+                        <xs:element name="includeMissing" type="xs:boolean" />
+                        <xs:element name="showConfLimits" type="xs:boolean" />
+                        <xs:element name="showCumulativePercent" type="xs:boolean" />
+                        <xs:element name="smarttable" type="xs:boolean" />
+                        <xs:element name="groupVariable" />
+                        <xs:element name="maxRows" type="xs:unsignedByte" />
+                        <xs:element name="maxColumnNameLength" type="xs:unsignedByte" />
+                        <xs:element name="sortColumnsByTabOrder" type="xs:string" />
+                        <xs:element name="showcolumnheadings" type="xs:string" />
+                        <xs:element name="showlinecolumn" type="xs:string" />
+                        <xs:element name="showNullLabels" type="xs:string" />
+                        <xs:element name="gadgetTitle" type="xs:string" />
+                        <xs:element name="gadgetDescription" />
+                        <xs:element name="EwavDataFilterCondition">
+                          <xs:complexType>
+                            <xs:attribute name="friendlyOperand" type="xs:string" use="required" />
+                            <xs:attribute name="friendlyValue" type="xs:unsignedByte" use="required" />
+                            <xs:attribute name="fieldName" type="xs:string" use="required" />
+                            <xs:attribute name="joinType" type="xs:string" use="required" />
+                            <xs:attribute name="friendLowValue" type="xs:string" use="required" />
+                            <xs:attribute name="friendHighValue" type="xs:string" use="required" />
+                            <xs:attribute name="order" type="xs:unsignedByte" use="required" />
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="listFields">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element maxOccurs="unbounded" name="listField" type="xs:string" />
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="sortFields">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="sortField" type="xs:string" />
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="showStrataSummaryOnly" type="xs:boolean" />
+                        <xs:element name="treatOutcomeAsContinuous" type="xs:boolean" />
+                        <xs:element name="maxColumns" type="xs:unsignedByte" />
+                      </xs:choice>
+                    </xs:sequence>
+                    <xs:attribute name="top" type="xs:unsignedShort" use="required" />
+                    <xs:attribute name="left" type="xs:unsignedShort" use="required" />
+                    <xs:attribute name="collapsed" type="xs:boolean" use="required" />
+                    <xs:attribute name="gadgetType" type="xs:string" use="required" />
+                    <xs:attribute name="xaml" type="xs:string" use="optional" />
+                    <xs:attribute name="toolbar_open" type="xs:boolean" use="optional" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="chart">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:choice maxOccurs="unbounded">
+                        <xs:element name="chartType" type="xs:string" />
+                        <xs:element name="chartSize" type="xs:string" />
+                        <xs:element name="chartLegendTitle" />
+                        <xs:element name="chartTitle" type="xs:string" />
+                        <xs:element name="columnAggregateFunction" type="xs:string" />
+                        <xs:element name="caseStatusVariable" />
+                        <xs:element name="dateVariable" type="xs:string" />
+                        <xs:element name="singleVariable" type="xs:string" />
+                        <xs:element name="weightVariable" />
+                        <xs:element name="strataVariable" />
+                        <xs:element name="yAxisVariable" />
+                        <xs:element name="xAxisVariable" />
+                        <xs:element name="yAxisLabel" type="xs:string" />
+                        <xs:element name="xAxisLabel" type="xs:string" />
+                        <xs:element name="dateInterval" type="xs:string" />
+                        <xs:element name="xAxisStartValue" />
+                        <xs:element name="xAxisEndValue" />
+                        <xs:element name="gadgetName" type="xs:string" />
+                        <xs:element name="gadgetDescription" />
+                        <xs:element name="colorPalette" type="xs:string" />
+                        <xs:element name="useDiffColors" type="xs:boolean" />
+                        <xs:element name="spacesBetweenBars" type="xs:string" />
+                        <xs:element name="showLegend" type="xs:boolean" />
+                        <xs:element name="showVariableNames" type="xs:boolean" />
+                        <xs:element name="legendPosition" type="xs:string" />
+                        <xs:element name="width" type="xs:unsignedShort" />
+                        <xs:element name="height" type="xs:unsignedShort" />
+                      </xs:choice>
+                    </xs:sequence>
+                    <xs:attribute name="top" type="xs:unsignedShort" use="required" />
+                    <xs:attribute name="left" type="xs:unsignedShort" use="required" />
+                    <xs:attribute name="collapsed" type="xs:boolean" use="required" />
+                    <xs:attribute name="gadgetType" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

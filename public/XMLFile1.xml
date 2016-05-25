@@ -1,0 +1,212 @@
+﻿<DashboardCanvas xmlns="">
+  <CanvasCurrentCulture>en-US</CanvasCurrentCulture>
+  <CanvasWidth>4000</CanvasWidth>
+  <CanvasHeight>8000</CanvasHeight>
+  <Rules>
+    <rule type="Rule_GroupVariable" order="0">
+      <friendlyLabel>Create a variable group called FoodsEaten and include: CaesarSalad,ChefSalad,ChocolateChipCookies,EggSaladSandwich,GardenSalad,GrilledChickenSandwich,GrilledCheese,HamCheese,IcedTea,PBJ,PeanutButterCookies,PotatoChips,Reuben,Water</friendlyLabel>
+      <destinationColumnName>FoodsEaten</destinationColumnName>
+      <variableDataType>GroupVariable</variableDataType>
+      <Columns>
+        <column>CaesarSalad</column>
+        <column>ChefSalad</column>
+        <column>ChocolateChipCookies</column>
+        <column>EggSaladSandwich</column>
+        <column>GardenSalad</column>
+        <column>GrilledChickenSandwich</column>
+        <column>GrilledCheese</column>
+        <column>HamCheese</column>
+        <column>IcedTea</column>
+        <column>PBJ</column>
+        <column>PeanutButterCookies</column>
+        <column>PotatoChips</column>
+        <column>Reuben</column>
+        <column>Water</column>
+      </Columns>
+    </rule>
+    <rule type="Rule_ConditionalAssign" order="1">
+      <friendlyRule>Assign AteEggs the value True when The Value of ChefSalad is equal to YES ORThe Value of EggSaladSandwich is equal to YES . Otherwise, assign AteEggs the value False.</friendlyRule>
+      <destinationColumnName>AteEggs</destinationColumnName>
+      <destinationColumnType>System.Boolean</destinationColumnType>
+      <assignValue>True</assignValue>
+      <elseValue>False</elseValue>
+      <cbxFieldType>YesNo</cbxFieldType>
+      <variableDataType>Boolean</variableDataType>
+      <EwavDataFilterCondition friendlyOperand="is equal to" friendlyValue="YES" fieldName="ChefSalad" joinType="OR" friendLowValue="null" friendHighValue="null" order="0"></EwavDataFilterCondition>
+      <EwavDataFilterCondition friendlyOperand="is equal to" friendlyValue="YES" fieldName="EggSaladSandwich" joinType="AND" friendLowValue="null" friendHighValue="null" order="1"></EwavDataFilterCondition>
+    </rule>
+  </Rules>
+  <DataFilters></DataFilters>
+  <Gadgets>
+    <gadget top="23" left="98" collapsed="false" gadgetType="Ewav.LineList">
+      <groupVariable></groupVariable>
+      <maxRows>50</maxRows>
+      <maxColumnNameLength>24</maxColumnNameLength>
+      <sortColumnsByTabOrder>False</sortColumnsByTabOrder>
+      <showcolumnheadings>True</showcolumnheadings>
+      <showlinecolumn>True</showlinecolumn>
+      <showNullLabels>True</showNullLabels>
+      <gadgetTitle>Line Listing of Case Data for Salmonella Outbreak</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+      <listFields>
+        <listField>Age</listField>
+        <listField>AttendeeType</listField>
+        <listField>County</listField>
+        <listField>Gender</listField>
+        <listField>Status</listField>
+        <listField>State</listField>
+        <listField>Outcome</listField>
+      </listFields>
+      <sortFields>
+        <sortField>DOB (ascending)</sortField>
+      </sortFields>
+    </gadget>
+    <gadget top="26" left="925" collapsed="false" gadgetType="Ewav.FrequencyControl">
+      <mainVariable>Ill</mainVariable>
+      <strataVariable>Gender</strataVariable>
+      <weightVariable></weightVariable>
+      <sort></sort>
+      <allValues>false</allValues>
+      <precision>4</precision>
+      <includeMissing>false</includeMissing>
+      <showConfLimits>true</showConfLimits>
+      <showCumulativePercent>true</showCumulativePercent>
+      <gadgetTitle>Frequency</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+    </gadget>
+    <gadget top="39" left="1476" collapsed="false" gadgetType="Ewav.CombinedFrequency">
+      <mainVariable>FoodsEaten</mainVariable>
+      <strataVariable></strataVariable>
+      <sort>true</sort>
+      <combinedmode>Automatic</combinedmode>
+      <truevalue></truevalue>
+      <showdenominator>true</showdenominator>
+      <gadgetTitle>Combined Frequency</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+    </gadget>
+    <gadget top="651" left="854" collapsed="false" gadgetType="Ewav.TwoxTwoTableControl">
+      <MainVariableName>AteEggs</MainVariableName>
+      <CrosstabVariableName>Ill</CrosstabVariableName>
+      <ShouldIncludeFullSummaryStatistics>false</ShouldIncludeFullSummaryStatistics>
+      <exposurevariable>AteEggs</exposurevariable>
+      <outcomevariable>Ill</outcomevariable>
+      <showCumulativePercent>true</showCumulativePercent>
+      <smarttable>true</smarttable>
+      <gadgetTitle>2 x 2 Table</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+      <EwavDataFilterCondition friendlyOperand="is equal to" friendlyValue="1" fieldName="AteAt2" joinType="AND" friendLowValue="null" friendHighValue="null" order="0"></EwavDataFilterCondition>
+    </gadget>
+    <chart top="1044" left="78" collapsed="false" gadgetType="Ewav.EpiCurve">
+      <chartType>EpiCurve</chartType>
+      <chartSize>Medium</chartSize>
+      <chartLegendTitle></chartLegendTitle>
+      <chartTitle></chartTitle>
+      <columnAggregateFunction></columnAggregateFunction>
+      <caseStatusVariable></caseStatusVariable>
+      <dateVariable>OnsetDate</dateVariable>
+      <singleVariable></singleVariable>
+      <weightVariable></weightVariable>
+      <strataVariable></strataVariable>
+      <yAxisVariable></yAxisVariable>
+      <xAxisVariable></xAxisVariable>
+      <yAxisLabel>Count</yAxisLabel>
+      <xAxisLabel>Onset Date</xAxisLabel>
+      <dateInterval>Days</dateInterval>
+      <xAxisStartValue></xAxisStartValue>
+      <xAxisEndValue></xAxisEndValue>
+      <gadgetName>Epi Curve</gadgetName>
+      <gadgetDescription></gadgetDescription>
+      <colorPalette>VibrantA</colorPalette>
+      <useDiffColors>false</useDiffColors>
+      <spacesBetweenBars>0.1</spacesBetweenBars>
+      <showLegend>false</showLegend>
+      <showVariableNames>false</showVariableNames>
+      <legendPosition>Right</legendPosition>
+      <width>800</width>
+      <height>400</height>
+    </chart>
+    <chart top="1038" left="976" collapsed="false" gadgetType="Ewav.XYChartControl">
+      <chartType>Column</chartType>
+      <chartSize>Small</chartSize>
+      <chartTitle>Race</chartTitle>
+      <chartLegendTitle></chartLegendTitle>
+      <columnAggregateFunction>Count</columnAggregateFunction>
+      <caseStatusVariable></caseStatusVariable>
+      <dateVariable></dateVariable>
+      <singleVariable>Race</singleVariable>
+      <weightVariable></weightVariable>
+      <strataVariable></strataVariable>
+      <yAxisVariable></yAxisVariable>
+      <xAxisVariable></xAxisVariable>
+      <yAxisLabel>Count</yAxisLabel>
+      <xAxisLabel>Race</xAxisLabel>
+      <gadgetName>Column</gadgetName>
+      <gadgetDescription></gadgetDescription>
+      <colorPalette>VibrantA</colorPalette>
+      <useDiffColors>true</useDiffColors>
+      <spacesBetweenBars>Small</spacesBetweenBars>
+      <showLegend>false</showLegend>
+      <showVariableNames>false</showVariableNames>
+      <legendPosition>Right</legendPosition>
+      <width>800</width>
+      <height>400</height>
+    </chart>
+    <chart top="1666" left="84" collapsed="false" gadgetType="Ewav.XYChartControl">
+      <chartType>Pie</chartType>
+      <chartSize>Small</chartSize>
+      <chartTitle></chartTitle>
+      <chartLegendTitle></chartLegendTitle>
+      <columnAggregateFunction>Count</columnAggregateFunction>
+      <caseStatusVariable></caseStatusVariable>
+      <dateVariable></dateVariable>
+      <singleVariable>Outcome</singleVariable>
+      <weightVariable></weightVariable>
+      <strataVariable></strataVariable>
+      <yAxisVariable></yAxisVariable>
+      <xAxisVariable></xAxisVariable>
+      <yAxisLabel>Count</yAxisLabel>
+      <xAxisLabel></xAxisLabel>
+      <gadgetName>Pie</gadgetName>
+      <gadgetDescription></gadgetDescription>
+      <colorPalette>VibrantA</colorPalette>
+      <useDiffColors>false</useDiffColors>
+      <spacesBetweenBars>0.1</spacesBetweenBars>
+      <showLegend>false</showLegend>
+      <showVariableNames>false</showVariableNames>
+      <legendPosition>Right</legendPosition>
+      <width>800</width>
+      <height>400</height>
+    </chart>
+    <gadget top="1670" left="972" collapsed="false" gadgetType="Ewav.MxNTableControl">
+      <mainVariable>Outcome</mainVariable>
+      <crosstabVariable>Gender</crosstabVariable>
+      <strataVariable>Race</strataVariable>
+      <weightVariable></weightVariable>
+      <maxColumnNameLength>24</maxColumnNameLength>
+      <allValues>false</allValues>
+      <showConfLimits>true</showConfLimits>
+      <showCumulativePercent>true</showCumulativePercent>
+      <includeMissing>false</includeMissing>
+      <showStrataSummaryOnly>false</showStrataSummaryOnly>
+      <treatOutcomeAsContinuous>false</treatOutcomeAsContinuous>
+      <maxColumns>20</maxColumns>
+      <maxRows>200</maxRows>
+      <gadgetTitle>M x N Table</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+    </gadget>
+    <gadget top="2708" left="144" collapsed="false" gadgetType="Ewav.FrequencyControl">
+      <mainVariable>HamCheese</mainVariable>
+      <strataVariable></strataVariable>
+      <weightVariable></weightVariable>
+      <sort></sort>
+      <allValues>false</allValues>
+      <precision>4</precision>
+      <includeMissing>false</includeMissing>
+      <showConfLimits>true</showConfLimits>
+      <showCumulativePercent>true</showCumulativePercent>
+      <gadgetTitle>Frequency</gadgetTitle>
+      <gadgetDescription></gadgetDescription>
+    </gadget>
+    <gadget top="2562" left="141" collapsed="false" xaml="PABTAGUAYwB0AGkAbwBuACAAeABtAGwAOgBzAHAAYQBjAGUAPQAiAHAAcgBlAHMAZQByAHYAZQAiACAASABhAHMAVAByAGEAaQBsAGkAbgBnAFAAYQByAGEAZwByAGEAcABoAEIAcgBlAGEAawBPAG4AUABhAHMAdABlAD0AIgBGAGEAbABzAGUAIgAgAHgAbQBsAG4AcwA9ACIAaAB0AHQAcAA6AC8ALwBzAGMAaABlAG0AYQBzAC4AbQBpAGMAcgBvAHMAbwBmAHQALgBjAG8AbQAvAHcAaQBuAGYAeAAvADIAMAAwADYALwB4AGEAbQBsAC8AcAByAGUAcwBlAG4AdABhAHQAaQBvAG4AIgA+ADwAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0AFMAaQB6AGUAPQAiADEANgAiACAARgBvAG4AdABGAGEAbQBpAGwAeQA9ACIAUwBlAGcAbwBlACAAVQBJACIAIABGAG8AcgBlAGcAcgBvAHUAbgBkAD0AIgAjAEYARgAwADAAMAAwADAAMAAiACAARgBvAG4AdABXAGUAaQBnAGgAdAA9ACIATgBvAHIAbQBhAGwAIgAgAEYAbwBuAHQAUwB0AHkAbABlAD0AIgBOAG8AcgBtAGEAbAAiACAARgBvAG4AdABTAHQAcgBlAHQAYwBoAD0AIgBOAG8AcgBtAGEAbAAiACAAQwBoAGEAcgBhAGMAdABlAHIAUwBwAGEAYwBpAG4AZwA9ACIAMAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEEAbgBuAG8AdABhAHQAaQBvAG4AQQBsAHQAZQByAG4AYQB0AGUAcwA9ACIAMAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEUAYQBzAHQAQQBzAGkAYQBuAEUAeABwAGUAcgB0AEYAbwByAG0AcwA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4ARQBhAHMAdABBAHMAaQBhAG4ATABhAG4AZwB1AGEAZwBlAD0AIgBOAG8AcgBtAGEAbAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEUAYQBzAHQAQQBzAGkAYQBuAFcAaQBkAHQAaABzAD0AIgBOAG8AcgBtAGEAbAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdABhAG4AZABhAHIAZABMAGkAZwBhAHQAdQByAGUAcwA9ACIAVAByAHUAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEMAbwBuAHQAZQB4AHQAdQBhAGwATABpAGcAYQB0AHUAcgBlAHMAPQAiAFQAcgB1AGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBEAGkAcwBjAHIAZQB0AGkAbwBuAGEAcgB5AEwAaQBnAGEAdAB1AHIAZQBzAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBIAGkAcwB0AG8AcgBpAGMAYQBsAEwAaQBnAGEAdAB1AHIAZQBzAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAYQBuAGQAYQByAGQAUwB3AGEAcwBoAGUAcwA9ACIAMAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEMAbwBuAHQAZQB4AHQAdQBhAGwAUwB3AGEAcwBoAGUAcwA9ACIAMAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEMAbwBuAHQAZQB4AHQAdQBhAGwAQQBsAHQAZQByAG4AYQB0AGUAcwA9ACIAVAByAHUAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdAB5AGwAaQBzAHQAaQBjAEEAbAB0AGUAcgBuAGEAdABlAHMAPQAiADAAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAxAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAyAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAzAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA0AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA1AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA2AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA3AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA4AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAA5AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAxADAAPQAiAEYAYQBsAHMAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdAB5AGwAaQBzAHQAaQBjAFMAZQB0ADEAMQA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4AUwB0AHkAbABpAHMAdABpAGMAUwBlAHQAMQAyAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAxADMAPQAiAEYAYQBsAHMAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdAB5AGwAaQBzAHQAaQBjAFMAZQB0ADEANAA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4AUwB0AHkAbABpAHMAdABpAGMAUwBlAHQAMQA1AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAxADYAPQAiAEYAYQBsAHMAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdAB5AGwAaQBzAHQAaQBjAFMAZQB0ADEANwA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4AUwB0AHkAbABpAHMAdABpAGMAUwBlAHQAMQA4AD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBTAHQAeQBsAGkAcwB0AGkAYwBTAGUAdAAxADkAPQAiAEYAYQBsAHMAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFMAdAB5AGwAaQBzAHQAaQBjAFMAZQB0ADIAMAA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4AQwBhAHAAaQB0AGEAbABzAD0AIgBOAG8AcgBtAGEAbAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEMAYQBwAGkAdABhAGwAUwBwAGEAYwBpAG4AZwA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4ASwBlAHIAbgBpAG4AZwA9ACIAVAByAHUAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAEMAYQBzAGUAUwBlAG4AcwBpAHQAaQB2AGUARgBvAHIAbQBzAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBIAGkAcwB0AG8AcgBpAGMAYQBsAEYAbwByAG0AcwA9ACIARgBhAGwAcwBlACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4ARgByAGEAYwB0AGkAbwBuAD0AIgBOAG8AcgBtAGEAbAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAE4AdQBtAGUAcgBhAGwAUwB0AHkAbABlAD0AIgBOAG8AcgBtAGEAbAAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAE4AdQBtAGUAcgBhAGwAQQBsAGkAZwBuAG0AZQBuAHQAPQAiAE4AbwByAG0AYQBsACIAIABUAHkAcABvAGcAcgBhAHAAaAB5AC4AUwBsAGEAcwBoAGUAZABaAGUAcgBvAD0AIgBGAGEAbABzAGUAIgAgAFQAeQBwAG8AZwByAGEAcABoAHkALgBNAGEAdABoAGUAbQBhAHQAaQBjAGEAbABHAHIAZQBlAGsAPQAiAEYAYQBsAHMAZQAiACAAVAB5AHAAbwBnAHIAYQBwAGgAeQAuAFYAYQByAGkAYQBuAHQAcwA9ACIATgBvAHIAbQBhAGwAIgAgAFQAZQB4AHQATwBwAHQAaQBvAG4AcwAuAFQAZQB4AHQASABpAG4AdABpAG4AZwBNAG8AZABlAD0AIgBGAGkAeABlAGQAIgAgAFQAZQB4AHQATwBwAHQAaQBvAG4AcwAuAFQAZQB4AHQARgBvAHIAbQBhAHQAdABpAG4AZwBNAG8AZABlAD0AIgBJAGQAZQBhAGwAIgAgAFQAZQB4AHQATwBwAHQAaQBvAG4AcwAuAFQAZQB4AHQAUgBlAG4AZABlAHIAaQBuAGcATQBvAGQAZQA9ACIAQQB1AHQAbwAiACAAVABlAHgAdABBAGwAaQBnAG4AbQBlAG4AdAA9ACIATABlAGYAdAAiACAATABpAG4AZQBIAGUAaQBnAGgAdAA9ACIAMAAiACAATABpAG4AZQBTAHQAYQBjAGsAaQBuAGcAUwB0AHIAYQB0AGUAZwB5AD0AIgBNAGEAeABIAGUAaQBnAGgAdAAiAD4APABSAHUAbgAgAEYAbwBuAHQAUwBpAHoAZQA9ACIAMgA2AC4ANgA2ADYAOQA5ADkAOAAxADYAOAA5ADQANQAiACAARgBvAG4AdABXAGUAaQBnAGgAdAA9ACIAQgBvAGwAZAAiAD4AVABBAEIATABFACAASQBJADwALwBSAHUAbgA+ADwALwBQAGEAcgBhAGcAcgBhAHAAaAA+ADwALwBTAGUAYwB0AGkAbwBuAD4A" gadgetType="Ewav.TextControl" toolbar_open="false"></gadget>
+  </Gadgets>
+</DashboardCanvas>
