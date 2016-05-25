@@ -1,0 +1,355 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"do",
+				"document"
+			],
+			[
+				"ecda",
+				"ecda-frequency"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"ed",
+				"ecda-conta"
+			],
+			[
+				"pa",
+				"paper-slider	paper-slider"
+			],
+			[
+				"d",
+				"div	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "public/ecda-container.html",
+			"settings":
+			{
+				"buffer_size": 5778,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<dom-module id=\"ecda-dash\">\n\n\n    <link rel=\"import\" href=\"bower_components/iron-icons/iron-icons.html\">\n\n    <link rel=\"import\" href=\"bower_components/paper-drawer-panel/paper-drawer-panel.html\">\n    <link rel=\"import\" href=\"bower_components/paper-header-panel/paper-header-panel.html\">\n    <link rel=\"import\" href=\"bower_components/paper-icon-button/paper-icon-button.html\">\n    <link rel=\"import\" href=\"bower_components/paper-item/paper-item.html\">\n    <link rel=\"import\" href=\"bower_components/paper-menu/paper-menu.html\">\n    <link rel=\"import\" href=\"bower_components/paper-toolbar/paper-toolbar.html\">\n\n    <link rel=\"import\" href=\"ecda-container.html\" />\n\n\n    <link rel=\"import\" type=\"css\" href=\"stylesheets/ecda.css\" />\n\n    <template>\n\n\n        <iron-meta id=\"metaX\"></iron-meta>    \n\n\n        <paper-drawer-panel id=\"navDrawerPanel\">\n\n            <div class=\"nav\" drawer>\n                <!-- Nav Content -->\n                aaaa\n            </div>\n\n            <paper-drawer-panel id=\"mainDrawerPanel\" class=\"main-drawer-panel\" main\n                                drawer-toggle-attribute=\"list-toggle\">\n\n                <paper-header-panel class=\"list-panel\" drawer>\n\n                    <!-- List Toolbar -->\n                    <paper-toolbar>\n                        <paper-icon-button icon=\"menu\" paper-drawer-toggle></paper-icon-button>\n                    </paper-toolbar>\n\n                    <!-- List -->\n                    <paper-menu class=\"list\" on-iron-activate=\"_listTap\">\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                        <paper-item></paper-item>\n                    </paper-menu>\n\n                </paper-header-panel>\n\n                <paper-header-panel class=\"content-panel\" main>\n\n                    <!-- Main Toolbar -->\n                    <paper-toolbar>\n                        <paper-icon-button icon=\"arrow-back\" list-toggle></paper-icon-button>\n                    </paper-toolbar>\n\n                    <!-- Main Content -->\n                    <div class=\"content\">\n                        <ecda-container></ecda-container>\n                    </div>\n\n                </paper-header-panel>\n\n            </paper-drawer-panel>\n\n        </paper-drawer-panel>\n\n    </template>\n\n    <script>    \n\n        var      gCanvas = {}    ;\n      gUser = {}          \n\n\n        Polymer({\n            is: 'ecda-dash',\n            attached: function () {\n                //  dfdf = meta.byKey('info')\n\n                console.log('this.$.metaX.value ---->  ' + this.$.metaX.value);\n\n                console.log(gotMeta);\n\n            },\n            _computeListWidth: function (isMobile) {\n                // when in mobile screen size, make the list be 100% width to cover the whole screen\n                return isMobile ? '100%' : '33%';\n            },\n            _listTap: function () {\n                this.$.mainDrawerPanel.closeDrawer();\n            }\n        });\n    </script>\n\n</dom-module>",
+			"file": "public/ecda-dash.html",
+			"file_size": 3963,
+			"file_write_time": 131073273983375451,
+			"settings":
+			{
+				"buffer_size": 3852,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/polymer-test1.html",
+			"settings":
+			{
+				"buffer_size": 117,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: List Packages"
+			],
+			[
+				"list",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Add Repository"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
+			[
+				"format",
+				"Snippet: for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 277.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"aa"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/SourceCode/polymer_apps/ecda_prototype2",
+		"/C/SourceCode/polymer_apps/ecda_prototype2/public"
+	],
+	"file_history":
+	[
+		"/C/Users/zpq4/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/SourceCode/polymer_apps/ecda_prototype2/public/polymer-test1.html",
+		"/C/SourceCode/polymer_apps/ecda_prototype2/public/bower_components/webcomponentsjs/ShadowDOM.js",
+		"/C/SourceCode/polymer_apps/ecda/public/ecda-conta-test.html",
+		"/C/SourceCode/polymer_apps/ecda/public/ecda-conta.html",
+		"/C/SourceCode/polymer_apps/ecda/package.json",
+		"/C/SourceCode/polymer_apps/ecda/public/bs-config.json",
+		"/C/SourceCode/polymer_apps/ecda/public/ecda-canvas-test.html",
+		"/C/SourceCode/polymer_apps/ecda/public/ecda-canvas.html",
+		"/C/Program Files/Sublime Text 3/Packages/Color Scheme - Default.sublime-package",
+		"/C/Users/zpq4/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_computeListWidth"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "public/ecda-container.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								386,
+								386
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 660.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/ecda-dash.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3852,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3446,
+								3446
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+								80
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1644.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/polymer-test1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 272.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ecda_prototype2.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 284.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

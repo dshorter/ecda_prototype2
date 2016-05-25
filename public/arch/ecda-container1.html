@@ -1,0 +1,43 @@
+<dom-module id="ecda-container">
+
+    <link rel="import" href="ecda-frequency.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="ecda-google-map.html">
+
+    <style include="iron-flex iron-flex-alignment"></style>
+
+    <template>
+        <div class=" layout  horizontal wrap  " id="xx1">
+
+
+            <ecda-frequency jsondata="Frequency Declarative 1"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 2"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 3"></ecda-frequency>
+
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'ecda-container',
+            ready: function() {
+            
+            // injecting component into polymer  
+            var freq = document.createElement("ecda-frequency");    
+            var freq1 = document.createElement("ecda-frequency");   
+            var map =    document.createElement("ecda-google-map")        ;
+          
+             freq.jsondata = "Frequency Imperative 1";
+             freq1.jsondata = "Frequency Imperative 2";        
+                          map.jsondata = "Map Imperative 3"        ;    
+                          
+            Polymer.dom(xx1).appendChild(freq)                 ;    
+            Polymer.dom(xx1).appendChild(freq1 ) 
+              Polymer.dom(xx1).appendChild(map )                  ;    
+          
+    }
+
+});
+    </script>
+
+</dom-module>

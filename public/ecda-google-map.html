@@ -1,0 +1,38 @@
+<dom-module id="ecda-google-map">
+
+    <link rel="import" href="bower_components/google-map/google-map.html">
+
+    <style>
+        .outdiv {
+            margin: 20px;
+        }
+    </style>
+
+
+    <template>
+        <div class="outdiv">
+
+            <paper-card heading="Gadget {{jsondata}}" image="" "  elevation="1 " animated-shadow="true ">
+                <div class="card-content ">
+                    
+                    <google-map  api-key="AIzaSyA8Nv-F67QBuw9O_7zW9RFEBti0YT3fQ7c" latitude="37.77493 " longitude="-122.41942 " ></google-map>                                     
+                </div>
+                <div class="card-actions ">
+
+                </div>
+            </paper-card>
+
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+		is: 'ecda-google-map', 
+        properties: {
+        jsondata: String
+        }
+	});
+    </script>
+
+
+</dom-module>

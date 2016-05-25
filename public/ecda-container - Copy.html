@@ -1,0 +1,140 @@
+<dom-module id="ecda-container">
+
+    <link rel="import" href="ecda-frequency.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="ecda-google-map.html">
+
+    <style include="iron-flex iron-flex-alignment"></style>
+
+
+
+
+    <template>
+
+        <iron-ajax auto="true" id="myAjax"
+                   content-type="application/json; charset=utf-8"
+                   method="POST"
+                   url="http://localhost/edca.api/Login"
+                   on-response="handleResponseX"
+                   handle-as="text">
+        </iron-ajax>
+
+
+        <div class="layout horizontal wrap" id="xx1">
+
+            <ecda-frequency jsondata="x{{responseX}}"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 1"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 2"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 3"></ecda-frequency>
+
+        </div>
+
+    </template>
+    <script type= "text/javascript"    >   
+
+        Polymer({
+            is: 'ecda-container',
+            ready: function () {
+
+                this.addHardCoded();
+
+                //  var xx = "apple";      JSON.stringify({ id: 'zpq4@cdc.gov', password: 'Welcome!44', canvasid: '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0' });
+
+                var user = 'zpq4@cdc.gov';
+                var password = 'Welcome!44';
+                var canvasid = '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0';
+                var xx = { id: user, password: password, canvasid: canvasid };
+                //  alert  (xx)
+                //   this.$.myAjax.body = JSON.stringify('"id":"zpq4@cdc.gov","password":"Welcome!44","canvasid":"25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0"');
+                //  var ff = JSON.parse(xx);
+                this.$.myAjax.body = JSON.stringify(xx);    //   JSON.parse('{"xx": "hello"}');
+
+
+
+
+            },
+
+            attached: function () {
+                var xx = "apple";
+
+
+            },
+            addHardCoded: function () {
+                // injecting component into polymer
+                var freq = document.createElement("ecda-frequency");
+                var freq1 = document.createElement("ecda-frequency");
+                var map = document.createElement("ecda-google-map");
+
+                freq.jsondata = "Frequency Imperative 1";
+                freq1.jsondata = "Frequency Imperative 2";
+                map.jsondata = "Map Imperative 3";
+
+                Polymer.dom(xx1).appendChild(freq);
+                Polymer.dom(xx1).appendChild(freq1)
+                Polymer.dom(xx1).appendChild(map);
+
+            },
+            handleResponseX: function (e,   responseX) {
+                    
+                var jresp = e.detail.response;    
+                var jresp = responseX;
+                var jresp = e.detail;
+
+                //console.log(e);
+                //console.log(e.detail);
+                console.log("e.detail.xhr.responseType  --> " + e.detail.xhr.responseType);
+                //  console.log("e.detail.xhr.responseJSON  --> " + e.detail.xhr.responseJSON);
+                console.log("e.detail.xhr.responseText  --> " + e.detail.xhr.responseText);     
+                console.log("e.detail.xhr --> " + e.detail.xhr);
+                console.log("e.detail.xhr.response  --> " + e.detail.xhr.response);
+                console.log("responseX  --> " +    responseX);
+
+                alert(JSON.parse(e.detail.xhr.responseText).UserName);
+
+
+                //  this.walk(jresp);
+
+
+                //for (var key in response) {
+                //    if (response.hasOwnProperty(key)) {
+                //        var val = response[key];
+                //        alert(val);
+                //        alert(key);
+                //    }
+                //}
+
+
+
+            },
+            properties: {
+
+                ajaxBody: {
+                    type: String,
+                    computed: 'processBody(  aa )'
+                }
+            },
+            processBody: function (aa) {
+
+                alert("Hello from aa  ");
+                //    var xx = JSON.stringify({ id: 'zpq4@cdc.gov', password: 'Welcome!44', canvasid: '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0' });
+
+                return "azaz";      //      JSON.stringify({ id: 'zpq4@cdc.gov', password: 'Welcome!44', canvasid: '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0' });
+            },
+            walk: function walk(obj) {
+                for (var key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        var val = obj[key];
+                        console.log(val);
+                        //  walk(val);
+                    }
+                }
+                //  walk(obj);
+            },
+            afunc: function () {
+                //  alert("hello ")
+            }
+
+        });
+    </script>
+
+</dom-module>

@@ -1,0 +1,21 @@
+
+<dom-module id="ecda-container">  
+<template>
+   <div class="container flex-wrap">
+       <template is="dom-repeat" items="{{employees}}">
+        <paper-slider min="10" max="200" value="110"></paper-slider>
+        <paper-input label="Type stuff here" ></paper-input>  
+    </template>   
+</div>    
+
+</template>
+<script>
+    Polymer({
+        is: 'ecda-container'
+    });
+</script>
+
+
+</dom-module>  
+
+

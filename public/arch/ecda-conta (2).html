@@ -1,0 +1,32 @@
+<dom-module id="ecda-container">
+
+   <link rel="import" href="ecda-frequency.html">
+
+    <template>
+        <div class="container flex-wrap" id="xx1">
+
+
+            <ecda-frequency></ecda-frequency>
+
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'ecda-container',
+            ready: function() {
+            
+            // injecting component into polymer  
+            var el = document.createElement("ecda-frequency");    
+            var el1 = document.createElement("ecda-frequency");   
+          
+            Polymer.dom(xx1).appendChild(el)                 ;    
+            Polymer.dom(xx1).appendChild(el1 )                  ;    
+          
+    }
+
+});
+
+    </script>
+
+</dom-module>
