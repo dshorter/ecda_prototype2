@@ -1,0 +1,164 @@
+<dom-module id="ecda-container2">
+
+    <link rel="import" href="ecda-frequency.html">
+    <link rel="import"
+          href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <link rel="import" href="ecda-google-map.html">
+
+    <link rel="import" href="bower_components/iron-meta/iron-meta.html">
+
+
+    <style include="iron-flex iron-flex-alignment"></style>
+
+
+    <template>
+
+        <iron-meta key="thisKey"
+                   id="thisMeta"
+                   value="thisData"></iron-meta>
+
+
+        <iron-ajax id="myAjax"
+                   on-response="handleResponse">
+        </iron-ajax>
+
+        <!--   <iron-ajax auto="true"
+                      content-type="application/json; charset=utf-8"
+                      method="POST"
+                      url="http://localhost/edca.api/Login"
+                      on-response="handleResponse"
+                      handle-as="text">
+           </iron-ajax>-->
+
+
+        <iron-ajax id="canvasAjax" on-response="handleCanvasResponse">
+
+        </iron-ajax>
+
+
+        <div class="layout horizontal wrap" id="xx1">
+
+            <ecda-frequency id="firstFreq"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 1"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 2"></ecda-frequency>
+            <ecda-frequency jsondata="Frequency Declarative 3"></ecda-frequency>
+
+        </div>
+
+    </template>
+    <script>
+
+
+        Polymer({
+            is: 'ecda-container2',
+            ready: function () {
+
+                var user = 'zpq4@cdc.gov';
+                var password = 'Welcome!44';
+                var canvasid = '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0';
+                var jsonRequest = {
+                    id: user,
+                    password: password,
+                    canvasid: canvasid
+                };
+
+                this.tryAjax(this.$.myAjax, "Login", jsonRequest);
+
+
+            },
+
+            attached: function () {
+
+
+                this.addHardCoded();
+
+            },
+            addHardCoded: function () {
+                // injecting component into polymer
+                var freq = document.createElement("ecda-frequency");
+                var freq1 = document.createElement("ecda-frequency");
+                var map = document.createElement("ecda-google-map");
+
+                freq.jsondata = "Frequency Imperative 1";
+                freq1.jsondata = "Frequency Imperative 2";
+                map.jsondata = "Map Imperative 3";
+
+                Polymer.dom(xx1).appendChild(freq);
+                Polymer.dom(xx1).appendChild(freq1)
+                Polymer.dom(xx1).appendChild(map);
+
+
+            },
+            tryAjax: function (myAjax, controllerName, jsonRequest) {
+
+
+                myAjax.body = JSON.stringify(jsonRequest);
+
+                myAjax.contentType = "application/json; charset=utf-8";
+                myAjax.method = "POST";
+                myAjax.url = "http://localhost/edca.api/" + controllerName;
+                myAjax.handleAs = "text";
+                myAjax.responseType = "json";
+                myAjax.generateRequest();
+
+
+            },
+            handleCanvasResponse: function (response) {
+
+
+                logThis('hello ');
+
+                logThis(response.detail.xhr.responseText);
+
+            },
+            handleResponse: function (e, responseX) {
+
+
+                logThis("e.detail.xhr.responseType  --> " + e.detail.xhr.responseType);
+
+
+                var responseJson = JSON.parse(e.detail.xhr.responseText);
+
+                if (gUserJson) {
+
+                    gUserJson.User = responseJson;
+                    console.log('cont gUser ---->  ' + gUserJson.User);
+
+
+                    walk(gUserJson, "gUserJson");
+
+                }
+
+                //======================
+                var user = gUserJson.User.Email;
+                var password = gUserJson.User.PasswordHash;
+                var canvasid = '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0';
+                var jsonUser = {
+                    id: user,
+                    password: password,
+                    canvasid: canvasid
+                };
+                //    debugger    ;
+                //=====================
+                this.$.firstFreq.jsondata = responseJson.UserName;
+
+                var user = 'zpq4@cdc.gov';
+
+                var ff = {UserName: user};
+                walk(jsonUser);
+
+                this.tryAjax(this.$.canvasAjax, "Canvas", jsonUser);
+
+                logThis(this.$.canvasAjax.body);
+
+                //  //  this.$.canvasAjax.body = responseJson.UserName        ;
+
+                //   this.$.canvasAjax.generateRequest();
+
+            }
+
+
+        });
+    </script>
+
+</dom-module>
