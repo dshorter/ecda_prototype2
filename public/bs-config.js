@@ -19,9 +19,9 @@ module.exports = {
             "port": 8080
         }
     },
-    "files": ["*.html"],
+    "files": "*.*"  ,
     "watchOptions": {},
-    "server": false,
+    "server": true,
     "proxy": false,
     "port": 3000,
     "middleware": false,
@@ -35,14 +35,14 @@ module.exports = {
             "toggles": true
         }
     },
-    "logLevel": "debug",
+    "logLevel": "info",
     "logPrefix": "BS",
     "logConnections": false,
     "logFileChanges": true,
     "logSnippet": true,
     "rewriteRules": false,
     "open": "local",
-    "browser": ["google chrome", "firefox"],
+    "browser": "default",
     "xip": false,
     "hostnameSuffix": false,
     "reloadOnRestart": false,

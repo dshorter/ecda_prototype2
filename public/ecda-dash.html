@@ -10,7 +10,7 @@
     <link rel="import" href="bower_components/paper-menu/paper-menu.html">
     <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
 
-    <link rel="import" href="ecda-container.html" />
+    <link rel="import" href="ecda-container2.html" />
 
 
     <link rel="import" type="css" href="stylesheets/ecda.css" />
@@ -73,7 +73,7 @@
 
                     <!-- Main Content -->
                     <div class="content">
-                        <ecda-container></ecda-container>
+                        <ecda-container2></ecda-container2>
                     </div>
 
                 </paper-header-panel>
@@ -103,7 +103,9 @@
                 // when in mobile screen size, make the list be 100% width to cover the whole screen
                 return isMobile ? '100%' : '33%';
             },
-            _listTap: function () {
+            _listTap: function (e) {
+
+
                 this.$.mainDrawerPanel.closeDrawer();
             }
         });

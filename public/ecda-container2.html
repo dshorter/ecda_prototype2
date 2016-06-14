@@ -53,24 +53,27 @@
             is: 'ecda-container2',
             ready: function () {
 
-                var user = 'zpq4@cdc.gov';
-                var password = 'Welcome!44';
-                var canvasid = '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0';
+                var user = tempConstants.user;
+                var password = tempConstants.password;
+                var canvasid = tempConstants.canvasid;
+
                 var jsonRequest = {
                     id: user,
                     password: password,
                     canvasid: canvasid
                 };
 
-                this.tryAjax(this.$.myAjax, "Login", jsonRequest);
+                logThis('ready ');
+
+
+                tryAjax(this.$.myAjax, "Login", jsonRequest);
 
 
             },
 
             attached: function () {
 
-
-                this.addHardCoded();
+                //    this.addHardCoded();
 
             },
             addHardCoded: function () {
@@ -89,26 +92,14 @@
 
 
             },
-            tryAjax: function (myAjax, controllerName, jsonRequest) {
 
-
-                myAjax.body = JSON.stringify(jsonRequest);
-
-                myAjax.contentType = "application/json; charset=utf-8";
-                myAjax.method = "POST";
-                myAjax.url = "http://localhost/edca.api/" + controllerName;
-                myAjax.handleAs = "text";
-                myAjax.responseType = "json";
-                myAjax.generateRequest();
-
-
-            },
             handleCanvasResponse: function (response) {
 
+                //  logThis('hello ');
 
-                logThis('hello ');
+                //  logThis(response.detail.xhr.responseText);
 
-                logThis(response.detail.xhr.responseText);
+                walk( JSON.parse( response.detail.xhr.responseText  )  )        ;
 
             },
             handleResponse: function (e, responseX) {
@@ -124,7 +115,6 @@
                     gUserJson.User = responseJson;
                     console.log('cont gUser ---->  ' + gUserJson.User);
 
-
                     walk(gUserJson, "gUserJson");
 
                 }
@@ -132,28 +122,21 @@
                 //======================
                 var user = gUserJson.User.Email;
                 var password = gUserJson.User.PasswordHash;
-                var canvasid = '25cd9b0c-8adf-4c12-8580-72ea7b1ff9d0';
+                var canvasid = tempConstants.canvasid;
+
                 var jsonUser = {
                     id: user,
                     password: password,
                     canvasid: canvasid
                 };
-                //    debugger    ;
-                //=====================
+
+
                 this.$.firstFreq.jsondata = responseJson.UserName;
 
-                var user = 'zpq4@cdc.gov';
-
-                var ff = {UserName: user};
-                walk(jsonUser);
-
-                this.tryAjax(this.$.canvasAjax, "Canvas", jsonUser);
+                tryAjax(this.$.canvasAjax, "Canvas", jsonUser  )        ;
 
                 logThis(this.$.canvasAjax.body);
 
-                //  //  this.$.canvasAjax.body = responseJson.UserName        ;
-
-                //   this.$.canvasAjax.generateRequest();
 
             }
 
