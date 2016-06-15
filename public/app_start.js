@@ -41,7 +41,7 @@ function doWalk(obj, pad) {
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
             var val = obj[key];
-            console.log(pad + key + ' -- ' + val);
+            console.log(pad + key + ' ---> ' + val);
             if (typeof(val ) !== "string") {
                 doWalk(val, pad);
             }
@@ -61,7 +61,7 @@ function tryAjax(myAjax, controllerName, jsonRequest) {
     myAjax.responseType = "json";
     myAjax.generateRequest();
 
-
+    
 }
 
 

@@ -1,6 +1,6 @@
 <dom-module id="ecda-container2">
 
-    <link rel="import" href="ecda-frequency.html">
+    <link rel="import" href="ecda-gadget.html">
     <link rel="import"
           href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
     <link rel="import" href="ecda-google-map.html">
@@ -22,27 +22,24 @@
                    on-response="handleResponse">
         </iron-ajax>
 
-        <!--   <iron-ajax auto="true"
-                      content-type="application/json; charset=utf-8"
-                      method="POST"
-                      url="http://localhost/edca.api/Login"
-                      on-response="handleResponse"
-                      handle-as="text">
-           </iron-ajax>-->
-
 
         <iron-ajax id="canvasAjax" on-response="handleCanvasResponse">
 
         </iron-ajax>
 
 
+        <div>
+            <paper-material>
+                <p>Canvas Name: {{canvasResponseJson.DashboardCanvas.CanvasName }}</p>
+                <p>Datasource Name: {{canvasResponseJson.DashboardCanvas.DatasourceName }}</p>
+            </paper-material>
+        </div>
         <div class="layout horizontal wrap" id="xx1">
-
-            <ecda-frequency id="firstFreq"></ecda-frequency>
-            <ecda-frequency jsondata="Frequency Declarative 1"></ecda-frequency>
-            <ecda-frequency jsondata="Frequency Declarative 2"></ecda-frequency>
-            <ecda-frequency jsondata="Frequency Declarative 3"></ecda-frequency>
-
+            <template is="dom-repeat"
+                      items="{{canvasResponseJson.DashboardCanvas.Gadgets.gadget   }}">
+                <ecda-gadget id="gadget{{index }}"
+                             canvasjson="{{item }}"></ecda-gadget>
+            </template>
         </div>
 
     </template>
@@ -51,6 +48,18 @@
 
         Polymer({
             is: 'ecda-container2',
+            properties: {
+                xxJson: {
+                    type: Array,
+                    notify: true,
+                    value: function () {
+                        return [];
+                    }
+                },
+                canvasResponseJson: {
+                    type: Object
+                }
+            },
             ready: function () {
 
                 var user = tempConstants.user;
@@ -65,17 +74,16 @@
 
                 logThis('ready ');
 
+                this.xxJson = [{"Hello": "world"}, {"Hello": "xworld"}];
+                logThis(this.xxJson[1].Hello)
+
+                walk(this.xxJson, "xxJson from ready ")
 
                 tryAjax(this.$.myAjax, "Login", jsonRequest);
 
 
             },
 
-            attached: function () {
-
-                //    this.addHardCoded();
-
-            },
             addHardCoded: function () {
                 // injecting component into polymer
                 var freq = document.createElement("ecda-frequency");
@@ -95,11 +103,11 @@
 
             handleCanvasResponse: function (response) {
 
-                //  logThis('hello ');
+                this.canvasResponseJson = JSON.parse(response.detail.xhr.responseText);
 
-                //  logThis(response.detail.xhr.responseText);
+                walk(this.xxJson, "xxJson");
 
-                walk( JSON.parse( response.detail.xhr.responseText  )  )        ;
+                logThis(this.xxJson)      //  canvasResponseJson.DashboardCanvas.Gadgets.gadget)
 
             },
             handleResponse: function (e, responseX) {
@@ -131,9 +139,9 @@
                 };
 
 
-                this.$.firstFreq.jsondata = responseJson.UserName;
+                //  this.$.firstFreq.jsondata = responseJson.UserName;
 
-                tryAjax(this.$.canvasAjax, "Canvas", jsonUser  )        ;
+                tryAjax(this.$.canvasAjax, "Canvas", jsonUser);
 
                 logThis(this.$.canvasAjax.body);
 
